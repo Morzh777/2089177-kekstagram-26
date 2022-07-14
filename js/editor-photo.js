@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util.js';
-import { setDefaultLevel } from './effects.js';
+import { setDefaultLevel } from './effects-photo.js';
 
 const body = document.querySelector('body');
 const uploadModal = document.querySelector('.img-upload__overlay');
@@ -14,6 +14,7 @@ const uploadModalClose = document.querySelector('#upload-cancel');
 const resetSettings = () => {
   imagePreview.style = 'transform: scale(1.00)';
   scaleValue.value = '100%';
+  setDefaultLevel();
 };
 // Открытие окна редактирования загруженного фото
 uploadPhoto.addEventListener('change',  () => {
