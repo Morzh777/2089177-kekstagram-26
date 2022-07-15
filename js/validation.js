@@ -38,7 +38,7 @@ pristine.addValidator(textHashtags,isSplitSpaceHashtag,errorMessage.SEPARATION_H
 const isMaxHashtagsLength = (hashtags) => preparedHashtags(hashtags).length <= MAX_HASHTAGS;
 pristine.addValidator(textHashtags,isMaxHashtagsLength,errorMessage.MAX_HASHTAGS_LENGTH);
 
-const isSeparationHashtags = (hashtags) => hashtags === '' || preparedHashtags(hashtags).some((value) => value.indexOf('#', 1) <= 1) ||  preparedHashtags(hashtags).every((value) => RE_SYMBOL.test(value));
+const isSeparationHashtags = (hashtags) => hashtags === '' ||  preparedHashtags(hashtags).every((value) => RE_SYMBOL.test(value));
 pristine.addValidator(textHashtags,isSeparationHashtags,errorMessage.SEPARATION_HASHTAGS);
 
 const isRepeatHashtags = (hashtags) => isArrayUnique(preparedHashtags(hashtags));

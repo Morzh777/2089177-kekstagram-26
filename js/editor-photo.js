@@ -16,31 +16,32 @@ const resetSettings = () => {
   scaleValue.value = '100%';
   setDefaultLevel();
 };
-// Открытие окна редактирования загруженного фото
-uploadPhoto.addEventListener('change',  () => {
-  uploadModal.classList.remove('hidden');
-  body.classList.add('modal-open');
-  resetSettings();
-});
-
 // Закрытие окна
 const closePhotoEditor  = () => {
   uploadPhoto.value = '';
   uploadModal.classList.add('hidden');
   body.classList.remove('modal-open');
   setDefaultLevel();
+
 };
+// Открытие окна редактирования загруженного фото
+uploadPhoto.addEventListener('change',  () => {
+  uploadModal.classList.remove('hidden');
+  body.classList.add('modal-open');
 
-uploadModalClose.addEventListener('click',  () => {
-  closePhotoEditor();
-});
+  document.addEventListener('keydown', (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      closePhotoEditor();
+    }
+  },{ once: true });
 
-document.addEventListener('keydown', (evt) => {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
+  uploadModalClose.addEventListener('click',  () => {
     closePhotoEditor();
-  }
+  });
+  resetSettings();
 });
+
 
 // Изменение размера фото
 const ScalePhoto = {
